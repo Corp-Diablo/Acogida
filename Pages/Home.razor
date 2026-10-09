@@ -1,0 +1,203 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+<!-- PANTALLA 1: EL MENÚ PRINCIPAL WEB -->
+<div id="pantallaMenu" class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
+    <h1 style="color:#ffc13b; margin-top:20px;">CASTELLANO</h1>
+    <p>Selecciona una opción / اختر خيارًا</p>
+    <div style="max-width:380px; margin:0 auto;">
+        <button class="btn-menu" @onclick='() => CanviarPantalla("aliments")'>
+            <div class="icono-btn">🍲</div>
+            <div style="text-align:left;">ALIMENTOS<div style="font-size:12px; color:#666; font-weight:normal;">Comida y bebida</div></div>
+        </button>
+        <button class="btn-menu" @onclick='() => CanviarPantalla("auxili")'>
+            <div class="icono-btn">🚨</div>
+            <div style="text-align:left;">AUXILIO<div style="font-size:12px; color:#666; font-weight:normal;">Ayuda y urgencias</div></div>
+        </button>
+    </div>
+</div>
+
+<!-- PANTALLA 2: JOC D'ALIMENTS -->
+<div id="pantallaAliments" class="pantalla @(pantallaActiva == "aliments" ? "activa" : "")">
+    <button class="btn-volver" @onclick='() => CanviarPantalla("menu")'>⬅ VOLVER / رجوع</button>
+    <br>
+    <div id="lblContadorAli" class="indicador">@(indexAli + 1) / @llistaAliments.Count</div>
+    <div class="contenedor-movil">
+        <!-- REPARAT: Ruta web directa sense virguleta per a entorn offline local -->
+        <img id="imgAlimento" class="foto-alimento" src="img/@llistaAliments[indexAli].Img" alt="Comida">
+        <h1 id="txtAlimento">@ObtenirTextAlimentActual()</h1>
+        <button class="btn-principal" @onclick='() => ParlarAliments("es")'>🔊</button>
+        <div style="font-size:13px; color:#666; margin:10px 0 2px 0; font-weight:bold;">Ayuda / المساعدة:</div>
+        <button class="btn-idioma" @onclick='() => ParlarAliments("ar_es")'>🇸🇦</button>
+        <button class="btn-idioma" @onclick='() => ParlarAliments("ar_da")'>🇲🇦</button>
+        <button class="btn-idioma" @onclick='() => ParlarAliments("fr")'>🇫🇷</button>
+        <button class="btn-idioma" @onclick='() => ParlarAliments("en")'>🇬🇧</button>
+        <button class="btn-siguiente" @onclick="AvancarAliments">SIGUIENTE ➔</button>
+    </div>
+</div>
+
+<!-- PANTALLA 3: FRASES D'AUXILI -->
+<div id="pantallaAuxili" class="pantalla @(pantallaActiva == "auxili" ? "activa" : "")">
+    <button class="btn-volver" @onclick='() => CanviarPantalla("menu")'>⬅ VOLVER / رجوع</button>
+    <br>
+    <div id="lblContadorAux" class="indicador">@(indexAux + 1) / @llistaFrases.Count</div>
+    <div class="contenedor-movil">
+        <div id="icoAuxilio" class="zona-iconos">@llistaFrases[indexAux].Ico</div>
+        <h1 id="txtFrase">@ObtenirTextFraseActual()</h1>
+        <button class="btn-principal" @onclick='() => ParlarFrases("es")'>🔊</button>
+        <div style="font-size:13px; color:#666; margin:10px 0 2px 0; font-weight:bold;">Ayuda / المساعدة:</div>
+        <button class="btn-idioma" @onclick='() => ParlarFrases("ar_es")'>🇸🇦</button>
+        <button class="btn-idioma" @onclick='() => ParlarFrases("ar_da")'>🇲🇦</button>
+        <button class="btn-idioma" @onclick='() => ParlarFrases("fr")'>🇫🇷</button>
+        <button class="btn-idioma" @onclick='() => ParlarFrases("en")'>🇬🇧</button>
+        <button class="btn-siguiente" style="background-color:#e65100;" @onclick="AvancarFrases">SIGUIENTE ➔</button>
+    </div>
+</div>
+
+<!-- PEU DE PÀGINA CORPORATIU -->
+<div style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 35px; padding-bottom: 10px; font-family: Arial, sans-serif; letter-spacing: 1px;">
+    © 2026 Corp.Diablo. Todos los derechos reservados.
+</div>
+
+@code {
+    // Control de navegació de pantalles
+    private string pantallaActiva = "menu";
+    private int indexAli = 0;
+    private int indexAux = 0;
+    private string idiomaSeleccionatAliments = "es";
+    private string idiomaSeleccionatFrases = "es";
+
+    // Estructures de dades orientades a objectes (.NET)
+    public class Alimento
+    {
+        public string Es { get; set; } = "";
+        public string ArEs { get; set; } = "";
+        public string ArDa { get; set; } = "";
+        public string Fr { get; set; } = "";
+        public string En { get; set; } = "";
+        public string Img { get; set; } = "";
+    }
+
+    public class Frase
+    {
+        public string Es { get; set; } = "";
+        public string ArEs { get; set; } = "";
+        public string ArDa { get; set; } = "";
+        public string Fr { get; set; } = "";
+        public string En { get; set; } = "";
+        public string Ico { get; set; } = "";
+    }
+
+    private List<Alimento> llistaAliments = new List<Alimento> {
+        new Alimento { Es = "AGUA Y PAN", ArEs = "ماء وخبز", ArDa = "الما والخبز", Fr = "Eau et pain", En = "Water and bread", Img = "Panyagua.jpg" },
+        new Alimento { Es = "ARROZ CON VERDURAS", ArEs = "أرز مع الخضار", ArDa = "الروز بالخضرة", Fr = "Riz aux légumes", En = "Rice with vegetables", Img = "Arrozconverduras.jpg" },
+        new Alimento { Es = "LENTEJAS", ArEs = "عدس مطهي", ArDa = "العدس بلا خنزير", Fr = "Lentilles mijotées", En = "Stewed lentils", Img = "Lentejasestofadasconverduras.jpg" },
+        new Alimento { Es = "GARBANZOS", ArEs = "حمص مطهي", ArDa = "الحمص", Fr = "Poteau de pois chiches", En = "Chickpea stew", Img = "Garbanzosconverduras.jpg" },
+        new Alimento { Es = "MACARRONES", ArEs = "معكرونة بالصلصة", ArDa = "الماكرونة بمطيشة", Fr = "Pâtes à la tomate", En = "Pasta with tomato sauce", Img = "Macarrones.jpg" },
+        new Alimento { Es = "POLLO CON PATATAS", ArEs = "دجاج مع البطاطس", ArDa = "الدجاج بالبطاطا", Fr = "Poulet avec pommes de terre", En = "Chicken with potatoes", Img = "Polloconpatatas.jpg" },
+        new Alimento { Es = "PESCADO", ArEs = "سمك", ArDa = "الحوت", Fr = "Poisson", En = "Fish", Img = "Pescadoconesparragos.jpg" },
+        new Alimento { Es = "PLÁTANO Y MANZANA", ArEs = "موز وتفاح", ArDa = "البنان والتفاح", Fr = "Banane et pomme", En = "Banana and apple", Img = "Manzanasyplatanos.jpg" },
+        new Alimento { Es = "TÉ VERDE", ArEs = "شاي أخضر بالنعناع", ArDa = "الأتاي بالنعناع", Fr = "Thé vert à la menthe", En = "Green tea with mint", Img = "TeverdeconmentaohierbabuenaGunpowder.jpg" }
+    };
+
+    private List<Frase> llistaFrases = new List<Frase> {
+        new Frase { Es = "TENGO HAMBRE", ArEs = "أنا جائع", ArDa = "أنا جيعان", Fr = "J'ai faim", En = "I am hungry", Ico = "🥣" },
+        new Frase { Es = "TENGO SED", ArEs = "أنا عطشان", ArDa = "أنا عطشان", Fr = "J'ai soif", En = "I am thirsty", Ico = "🥛" },
+        new Frase { Es = "NECESITO AYUDA", ArEs = "أحتاج إلى المساعدة", ArDa = "محتاج المساعدة", Fr = "J'ai besoin d'aide", En = "I need help", Ico = "🚨" },
+        new Frase { Es = "MÉDICO", ArEs = "طبيب", ArDa = "طبيب", Fr = "Médecin", En = "Doctor", Ico = "👨‍⚕️" },
+        new Frase { Es = "BAÑO O ASEO", ArEs = "المرحاض", ArDa = "المرحاض", Fr = "Toilettes", En = "Bathroom", Ico = "🚹" }
+    };
+
+    private void CanviarPantalla(string pantalla)
+    {
+        pantallaActiva = pantalla;
+        // Reiniciem idiomes en moure'ns per protegir l'experiència d'usuari
+        idiomaSeleccionatAliments = "es";
+        idiomaSeleccionatFrases = "es";
+        JS.InvokeVoidAsync("eval", "window.speechSynthesis.cancel()");
+    }
+
+    private void AvancarAliments()
+    {
+        indexAli++;
+        if (indexAli >= llistaAliments.Count)
+        {
+            indexAli = 0;
+        }
+        idiomaSeleccionatAliments = "es"; // Torna a castellà en passar de targeta
+    }
+
+    private void AvancarFrases()
+    {
+        indexAux++;
+        if (indexAux >= llistaFrases.Count)
+        {
+            indexAux = 0;
+        }
+        idiomaSeleccionatFrases = "es";
+    }
+
+    private string ObtenirTextAlimentActual()
+    {
+        var item = llistaAliments[indexAli];
+        return idiomaSeleccionatAliments switch
+        {
+            "ar_es" => item.ArEs,
+            "ar_da" => item.ArDa,
+            "fr" => item.Fr,
+            "en" => item.En,
+            _ => item.Es
+        };
+    }
+
+    private string ObtenirTextFraseActual()
+    {
+        var item = llistaFrases[indexAux];
+        return idiomaSeleccionatFrases switch
+        {
+            "ar_es" => item.ArEs,
+            "ar_da" => item.ArDa,
+            "fr" => item.Fr,
+            "en" => item.En,
+            _ => item.Es
+        };
+    }
+
+    // SISTEMA TEXT-TO-SPEECH OFFLINE INTEGRAT NATIVAMENT SENSE FITXERS MP3 EXTERNS
+    private async Task ParlarAliments(string idioma)
+    {
+        idiomaSeleccionatAliments = idioma;
+        string textAUtilitzar = ObtenirTextAlimentActual();
+        string codiIdiomaISO = ConvertirIdiomaAISO(idioma);
+
+        await ExecutarVeuNativa(textAUtilitzar, codiIdiomaISO);
+    }
+
+    private async Task ParlarFrases(string idioma)
+    {
+        idiomaSeleccionatFrases = idioma;
+        string textAUtilitzar = ObtenirTextFraseActual();
+        string codiIdiomaISO = ConvertirIdiomaAISO(idioma);
+
+        await ExecutarVeuNativa(textAUtilitzar, codiIdiomaISO);
+    }
+
+    private string ConvertirIdiomaAISO(string idioma)
+    {
+        return idioma switch
+        {
+            "ar_es" => "ar-SA",
+            "ar_da" => "ar-MA",
+            "fr" => "fr-FR",
+            "en" => "en-GB",
+            _ => "es-ES"
+        };
+    }
+
+    private async Task ExecutarVeuNativa(string text, string iso)
+    {
+        // Crida directa a la SpeechSynthesis API del navegador mòbil per reproduir la veu sense dades ni internet
+        string jsCode = $"window.speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance('{text.Replace("'", "\\'")}'); u.lang = '{iso}'; window.speechSynthesis.speak(u);";
+        await JS.InvokeVoidAsync("eval", jsCode);
+    }
+}
