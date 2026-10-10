@@ -1,6 +1,7 @@
 {
   "name": "Acogida",
   "short_name": "Acogida",
+  "description": "Aplicación de comunicación básica para personas inmigrantes y servicios de acogida.",
   "id": "./",
   "start_url": "./",
   "display": "standalone",
