@@ -23,8 +23,8 @@
     <br>
     <div id="lblContadorAli" class="indicador">@(indexAli + 1) / @llistaAliments.Count</div>
     <div class="contenedor-movil">
-        <!-- REPARAT: Ruta web directa sense virguleta per a entorn offline local -->
-        <img id="imgAlimento" class="foto-alimento" src="img/@llistaAliments[indexAli].Img" alt="Comida">
+        <!-- CORREGIT: S'ha canviat 'imagen/' per 'img/' per coincidir amb la teva arrel real i s'afegeix @key -->
+        <img @key="llistaAliments[indexAli].Img" id="imgAlimento" class="foto-alimento" src="img/@llistaAliments[indexAli].Img" alt="Comida">
         <h1 id="txtAlimento">@ObtenirTextAlimentActual()</h1>
         <button class="btn-principal" @onclick='() => ParlarAliments("es")'>🔊</button>
         <div style="font-size:13px; color:#666; margin:10px 0 2px 0; font-weight:bold;">Ayuda / المساعدة:</div>
