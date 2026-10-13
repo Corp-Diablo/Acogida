@@ -134,13 +134,16 @@
 
     private void AvancarFrases()
     {
-        StateHasChanged();
         indexAux++;
+
         if (indexAux >= llistaFrases.Count)
         {
             indexAux = 0;
         }
+
         idiomaSeleccionatFrases = "es";
+
+        StateHasChanged();
     }
 
     private string ObtenirTextAlimentActual()
