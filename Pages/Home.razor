@@ -120,12 +120,17 @@
     private void AvancarAliments()
     {
         indexAli++;
+
         if (indexAli >= llistaAliments.Count)
         {
             indexAli = 0;
         }
-        idiomaSeleccionatAliments = "es"; // Torna a castellà en passar de targeta
+
+        idiomaSeleccionatAliments = "es";
+
+        StateHasChanged();
     }
+
 
     private void AvancarFrases()
     {
