@@ -7,8 +7,7 @@
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
     <ApplicationIcon>calavera.ico</ApplicationIcon>
-    <StaticWebAssetBasePath>Acogida</StaticWebAssetBasePath>
-  </PropertyGroup>
+    </PropertyGroup>
 
   <ItemGroup>
     <Content Include="calavera.ico" />
