@@ -9,6 +9,10 @@
     <ApplicationIcon>calavera.ico</ApplicationIcon>
     </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="calavera.ico" />
   </ItemGroup>
