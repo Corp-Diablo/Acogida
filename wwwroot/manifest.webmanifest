@@ -3,7 +3,7 @@
   "short_name": "Acogida",
   "description": "Aplicación de comunicación básica para personas inmigrantes y servicios de acogida.",
   "id": "Acogida",
-  "start_url": "Acogida",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
