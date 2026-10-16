@@ -1,7 +1,6 @@
 ﻿@page "/"
 @inject NavigationManager Navigation
-@inject IJSRuntime JS
-@inject NavigationManager Navigation
+
 <div class="pantalla-bienvenida">
 
     <div class="logo-bienvenida">
@@ -17,29 +16,11 @@
     </p>
 
     <div class="idiomas-bienvenida">
-
-        <button class="btn-idioma"
-                @onclick='() => ProbarIdioma("Bienvenido a Acogida", "es-ES")'>
-            ES
-        </button>
-
-        <button class="btn-idioma"
-                @onclick='() => ProbarIdioma("مرحبا بكم", "ar-SA")'>
-            AR
-        </button>
-
-        <button class="btn-idioma"
-                @onclick='() => ProbarIdioma("Welcome to Acogida", "en-GB")'>
-            EN
-        </button>
-
-        <button class="btn-idioma"
-                @onclick='() => ProbarIdioma("Bienvenue dans Acogida", "fr-FR")'>
-            FR
-        </button>
-
+        <button class="btn-idioma">ES</button>
+        <button class="btn-idioma">AR</button>
+        <button class="btn-idioma">EN</button>
+        <button class="btn-idioma">FR</button>
     </div>
-
 
     <button class="btn-siguiente" @onclick="Comenzar">
         COMENZAR
@@ -53,18 +34,6 @@
     private void Comenzar()
     {
         Navigation.NavigateTo("/inicio");
-    }
-
-    private async Task ProbarIdioma(string texto, string idioma)
-    {
-        string js = $@"
-            window.speechSynthesis.cancel();
-            let u = new SpeechSynthesisUtterance('{texto}');
-            u.lang = '{idioma}';
-            window.speechSynthesis.speak(u);
-        ";
-
-        await JS.InvokeVoidAsync("eval", js);
     }
 
 }
