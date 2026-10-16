@@ -276,3 +276,43 @@ h1 {
     .pantalla.activa {
         display: block !important;
     }
+.pantalla-bienvenida {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-bienvenida {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: respirar 4s ease-in-out infinite;
+}
+
+.titulo-bienvenida {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.texto-bienvenida {
+    color: white;
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+}
+
+.idiomas-bienvenida {
+    margin-bottom: 1.5rem;
+}
+
+@keyframes respirar {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}

@@ -1,0 +1,40 @@
+﻿@page "/"
+@inject NavigationManager Navigation
+
+<div class="pantalla-bienvenida">
+
+    <div class="logo-bienvenida">
+        🌍
+    </div>
+
+    <h1 class="titulo-bienvenida">
+        ACOGIDA
+    </h1>
+
+    <p class="texto-bienvenida">
+        Comunicación básica y ayuda para personas recién llegadas
+    </p>
+
+    <div class="idiomas-bienvenida">
+        <button class="btn-idioma">ES</button>
+        <button class="btn-idioma">AR</button>
+        <button class="btn-idioma">EN</button>
+        <button class="btn-idioma">FR</button>
+    </div>
+
+    <button class="btn-siguiente" @onclick="Comenzar">
+        COMENZAR
+    </button>
+
+    <div class="copyright">
+        © 2026 Corp.Diablo
+    </div>
+@code {
+
+    private void Comenzar()
+    {
+        Navigation.NavigateTo("/inicio");
+    }
+
+}
+</div>
