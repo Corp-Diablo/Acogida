@@ -305,7 +305,28 @@ h1 {
 .idiomas-bienvenida {
     margin-bottom: 1.5rem;
 }
+.menu-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
+    .menu-card .icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+.btn-card {
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 @keyframes respirar {
 
     0%, 100% {
