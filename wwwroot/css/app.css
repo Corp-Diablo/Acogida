@@ -1,365 +1,5 @@
-/* =========================================================
-   AJUSTES GENERALES
-   ========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    overflow-x: hidden;
-    min-height: 100vh;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #1e3d59;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin: 0;
-    min-height: 100vh;
-    user-select: none;
-}
-
-h1:focus {
-    outline: none;
-}
-
-a,
-.btn-link {
-    color: #0071c1;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-.content {
-    padding-top: 1.1rem;
-}
-
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
-}
-
-.invalid {
-    outline: 1px solid red;
-}
-
-.validation-message {
-    color: red;
-}
-
-/* =========================================================
-   ERRORES DE BLAZOR
-   ========================================================= */
-
-#blazor-error-ui {
-    color-scheme: light only;
-    background: lightyellow;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: none;
-    position: fixed;
-    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-    box-sizing: border-box;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-}
-
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
-
-.blazor-error-boundary {
-    padding: 1rem 1rem 1rem 3.7rem;
-    color: white;
-}
-
-    .blazor-error-boundary::after {
-        content: "An error has occurred.";
-    }
-
-/* =========================================================
-   PANTALLA DE CARGA
-   ========================================================= */
-
-.loading-progress {
-    position: absolute;
-    display: block;
-    width: 8rem;
-    height: 8rem;
-    inset: 20vh 0 auto 0;
-    margin: 0 auto;
-}
-
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
-    }
-
-        .loading-progress circle:last-child {
-            stroke: #1b6ec2;
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-            transition: stroke-dasharray 0.05s ease-in-out;
-        }
-
-.loading-progress-text {
-    position: absolute;
-    text-align: center;
-    font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
-}
-
-    .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Loading");
-    }
-
-code {
-    color: #c02d76;
-}
-
-.form-floating > .form-control-plaintext::placeholder,
-.form-floating > .form-control::placeholder {
-    color: var(--bs-secondary-color);
-    text-align: end;
-}
-
-.form-floating > .form-control-plaintext:focus::placeholder,
-.form-floating > .form-control:focus::placeholder {
-    text-align: start;
-}
-
-/* =========================================================
-   APLICACIÓN ACOGIDA
-   ========================================================= */
-
-.indicador {
-    font-size: 1rem; /* 16px */
-    font-weight: bold;
-    background-color: #ffc13b;
-    color: #1e3d59;
-    padding: 0.3rem 0.9rem;
-    border-radius: 1.25rem;
-    display: inline-block;
-    margin-bottom: 0.4rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.contenedor-movil {
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto;
-    background: #ffffff;
-    color: #333;
-    border-radius: 20px;
-    padding: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-.foto-alimento {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.zona-iconos {
-    font-size: 72px;
-    margin: 12px 0;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-h1 {
-    font-size: 1.875rem; /* 30px */
-    text-transform: uppercase;
-    margin: 8px 0;
-    color: #1e3d59;
-}
-
-.btn-principal {
-    width: 80px;
-    height: 80px;
-    font-size: 32px;
-    background-color: #ffc13b;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 5px 8px rgba(0,0,0,0.3);
-}
-
-.btn-idioma {
-    width: 60px;
-    height: 60px;
-    font-size: 22px;
-    margin: 4px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: #eeeeee;
-}
-
-.btn-siguiente {
-    width: 100%;
-    background-color: #4caf50;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    margin-top: 12px;
-    cursor: pointer;
-}
-
-.btn-menu {
-    width: 100%;
-    background-color: #ffffff;
-    color: #1e3d59;
-    border: none;
-    border-radius: 15px;
-    padding: 16px;
-    margin-bottom: 16px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-}
-
-.icono-btn {
-    font-size: 36px;
-    margin-right: 16px;
-    background-color: #eeeeee;
-    padding: 8px;
-    border-radius: 12px;
-}
-
-.btn-volver {
-    background: #eeeeee;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    cursor: pointer;
-    color: #1e3d59;
-}
-
-.pantalla {
-    display: none !important;
-}
-
-    .pantalla.activa {
-        display: block !important;
-    }
-.pantalla-bienvenida {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.logo-bienvenida {
-    font-size: 5rem;
-    margin-bottom: 1rem;
-    animation: respirar 4s ease-in-out infinite;
-}
-
-.titulo-bienvenida {
-    color: white;
-    margin-bottom: 1rem;
-}
-
-.texto-bienvenida {
-    color: white;
-    max-width: 300px;
-    margin-bottom: 1.5rem;
-}
-
-.idiomas-bienvenida {
-    margin-bottom: 1.5rem;
-}
-.acompanamiento-card {
-    background: #f5f5f5;
-    border-radius: 30px;
-    padding: 20px;
-    margin: 20px 0;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
-    max-width: 100%;
-    min-height: 350px;
-}
-
-.acompanamiento-icon {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-.acompanamiento-card h2 {
-    color: #233b60;
-    margin-bottom: 15px;
-}
-
-.acompanamiento-card p {
-    color: #555;
-    margin: 8px 0;
-    line-height: 1.4;
-}
-
-.destacado {
-    font-weight: bold;
-    color: #2f80ed;
-    font-size: 1.1rem;
-}
-
-.btn-acompanamiento {
-    margin-top: 20px;
-    background: #2f80ed;
-    color: white;
-    border: none;
-    border-radius: 14px;
-    padding: 12px 28px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-@keyframes respirar {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-}
 /* =====================================================
-   TARJETAS PRINCIPALES DE ACOGIDA NUEVA
+   TARJETAS PRINCIPALES DE ACOGIDA
    ===================================================== */
 
 .tarjetas-grid {
@@ -380,9 +20,9 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .15);
     cursor: pointer;
-    transition: all .25s ease;
+    transition: .25s;
 }
 
     .tarjeta-acogida:hover {
@@ -390,10 +30,10 @@ h1 {
     }
 
     .tarjeta-acogida span {
-        margin-top: 10px;
         color: #1565c0;
         font-weight: 700;
         font-size: .9rem;
+        margin-top: 8px;
     }
 
 .tarjeta-ayuda {
@@ -410,9 +50,9 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,.20);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .20);
     cursor: pointer;
-    transition: all .25s ease;
+    transition: .25s;
 }
 
     .tarjeta-ayuda:hover {
@@ -431,7 +71,7 @@ h1 {
 
 /* MÓVILES */
 
-@media(max-width:480px) {
+@media (max-width: 480px) {
 
     .tarjetas-grid {
         gap: 10px;
