@@ -1,22 +1,50 @@
 ﻿@page "/inicio"
 @inject IJSRuntime JS
 
-<!-- PANTALLA 1: EL MENÚ PRINCIPAL WEB -->
-<div id="pantallaMenu" class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
-    <h1 style="color:#ffc13b; margin-top:20px;">ACOGIDA</h1>
-    <p>Selecciona una opción / اختر خيارًا</p>
-    <div style="max-width:380px; margin:0 auto;">
-        <button class="btn-menu" @onclick='() => CanviarPantalla("aliments")'>
-            <div class="icono-btn">🍲</div>
-            <div style="text-align:left;">ALIMENTOS<div style="font-size:12px; color:#666; font-weight:normal;">Comida y bebida</div></div>
-        </button>
-        <button class="btn-menu" @onclick='() => CanviarPantalla("auxili")'>
-            <div class="icono-btn">🚨</div>
-            <div style="text-align:left;">AUXILIO<div style="font-size:12px; color:#666; font-weight:normal;">Ayuda y urgencias</div></div>
-        </button>
-    </div>
-</div>
+<!-- PANTALLA 1: MENÚ PRINCIPAL -->
 
+<div id="pantallaMenu" class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
+
+    <h1 style="color:#ffc13b; margin-top:20px;">
+        ACOGIDA
+    </h1>
+
+    <p>
+        Selecciona una opción / اختر خيارًا
+    </p>
+
+    <div class="tarjetas-grid">
+
+        <button class="tarjeta-acogida"
+                @onclick='() => CanviarPantalla("aliments")'>
+            <div class="icono">🍞</div>
+            <span>ALIMENTACIÓN</span>
+        </button>
+
+        <button class="tarjeta-acogida"
+                @onclick='() => CanviarPantalla("auxili")'>
+            <div class="icono">🏥</div>
+            <span>SALUD</span>
+        </button>
+
+        <button class="tarjeta-acogida">
+            <div class="icono">📋</div>
+            <span>TRÁMITES</span>
+        </button>
+
+        <button class="tarjeta-acogida">
+            <div class="icono">🤝</div>
+            <span>ACOMPAÑAMIENTO</span>
+        </button>
+
+    </div>
+
+    <button class="tarjeta-ayuda">
+        <div class="icono">🆘</div>
+        <span>NO ENCUENTRO LO QUE NECESITO</span>
+    </button>
+
+</div>
 <!-- PANTALLA 2: JOC D'ALIMENTS -->
 <div id="pantallaAliments" class="pantalla @(pantallaActiva == "aliments" ? "activa" : "")">
     <button class="btn-volver" @onclick='() => CanviarPantalla("menu")'>⬅ VOLVER / رجوع</button>

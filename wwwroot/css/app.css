@@ -444,3 +444,100 @@ h1 {
         font-size: .8rem;
     }
 }
+/* =====================================================
+   TARJETAS PRINCIPALES DE ACOGIDA
+   ===================================================== */
+
+.tarjetas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 420px;
+    margin: 20px auto;
+}
+
+.tarjeta-acogida {
+    background: #ffffff;
+    border: none;
+    border-radius: 22px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,.15);
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+    .tarjeta-acogida:hover {
+        transform: translateY(-4px);
+    }
+
+    .tarjeta-acogida span {
+        margin-top: 10px;
+        color: #1565c0;
+        font-weight: 700;
+        font-size: .9rem;
+    }
+
+.tarjeta-ayuda {
+    width: 100%;
+    max-width: 420px;
+    margin: 5px auto 0 auto;
+    min-height: 100px;
+    border: none;
+    border-radius: 22px;
+    background: #1565c0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,.20);
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+    .tarjeta-ayuda:hover {
+        background: #0d47a1;
+    }
+
+    .tarjeta-ayuda span {
+        font-weight: 700;
+        font-size: .95rem;
+        padding: 0 10px;
+    }
+
+.icono {
+    font-size: 2.8rem;
+}
+
+/* MÓVILES */
+
+@media(max-width:480px) {
+
+    .tarjetas-grid {
+        gap: 10px;
+        max-width: 100%;
+    }
+
+    .tarjeta-acogida {
+        min-height: 120px;
+    }
+
+    .tarjeta-ayuda {
+        min-height: 90px;
+    }
+
+    .icono {
+        font-size: 2.2rem;
+    }
+
+    .tarjeta-acogida span,
+    .tarjeta-ayuda span {
+        font-size: .8rem;
+    }
+}
