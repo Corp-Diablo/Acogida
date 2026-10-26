@@ -2,9 +2,8 @@
 @inject IJSRuntime JS
 
 <!-- PANTALLA 1: MENÚ PRINCIPAL-->
-
+<div class="contenedor-menu">
 <div id="pantallaMenu" class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
-
     <h1 style="color:#ffc13b; margin-top:20px;">
         ACOGIDA
     </h1>
@@ -85,7 +84,7 @@
 <div style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 35px; padding-bottom: 10px; font-family: Arial, sans-serif; letter-spacing: 1px;">
     © 2026 Corp.Diablo. Todos los derechos reservados.
 </div>
-
+</div>
 @code {
     // Control de navegació de pantalles
     private string pantallaActiva = "menu";
