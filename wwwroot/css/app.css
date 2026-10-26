@@ -1,4 +1,55 @@
 /* =====================================================
+   CONTROL DE PANTALLAS
+   ===================================================== */
+
+.pantalla {
+    display: none;
+}
+
+    .pantalla.activa {
+        display: block;
+    }
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+   ===================================================== */
+
+.contenedor-menu {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+body {
+    background: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* =====================================================
+   TITULOS
+   ===================================================== */
+
+h1 {
+    margin: 15px 0;
+    text-align: center;
+}
+
+#pantallaMenu h1 {
+    color: #ffc13b;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+#pantallaMenu p {
+    text-align: center;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* =====================================================
    TARJETAS PRINCIPALES DE ACOGIDA
    ===================================================== */
 
@@ -19,28 +70,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, .15);
+    box-shadow: 0 6px 15px rgba(0,0,0,.15);
     cursor: pointer;
-    transition: .25s;
+    transition: all .25s ease;
 }
 
     .tarjeta-acogida:hover {
         transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0,0,0,.20);
     }
 
     .tarjeta-acogida span {
         color: #1565c0;
+        font-size: .95rem;
         font-weight: 700;
-        font-size: .9rem;
         margin-top: 8px;
     }
+
+.icono {
+    font-size: 2.8rem;
+}
+
+/* =====================================================
+   TARJETA SOS
+   ===================================================== */
 
 .tarjeta-ayuda {
     width: 100%;
     max-width: 420px;
-    margin: 5px auto 0 auto;
     min-height: 100px;
+    margin: 15px auto 0 auto;
     border: none;
     border-radius: 22px;
     background: #1565c0;
@@ -49,10 +108,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, .20);
+    box-shadow: 0 6px 15px rgba(0,0,0,.20);
     cursor: pointer;
-    transition: .25s;
+    transition: all .25s ease;
 }
 
     .tarjeta-ayuda:hover {
@@ -60,18 +118,131 @@
     }
 
     .tarjeta-ayuda span {
+        font-size: 1rem;
         font-weight: 700;
-        font-size: .95rem;
-        padding: 0 10px;
+        padding: 0 15px;
     }
 
-.icono {
-    font-size: 2.8rem;
+/* =====================================================
+   PANTALLA ALIMENTOS Y SALUD
+   ===================================================== */
+
+.contenedor-movil {
+    max-width: 450px;
+    margin: 20px auto;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
 }
 
-/* MÓVILES */
+.foto-alimento {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.zona-iconos {
+    font-size: 100px;
+    margin-bottom: 15px;
+}
+
+.indicador {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* =====================================================
+   BOTONES
+   ===================================================== */
+
+.btn-volver {
+    background: #757575;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+    .btn-volver:hover {
+        background: #616161;
+    }
+
+.btn-principal {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50%;
+    background: #1565c0;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+    .btn-principal:hover {
+        background: #0d47a1;
+    }
+
+.btn-idioma {
+    border: none;
+    background: #eeeeee;
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    margin: 4px;
+    font-size: 1.2rem;
+}
+
+    .btn-idioma:hover {
+        background: #dcdcdc;
+    }
+
+.btn-siguiente {
+    display: block;
+    margin: 15px auto 0 auto;
+    border: none;
+    background: #2e7d32;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .btn-siguiente:hover {
+        background: #1b5e20;
+    }
+
+/* =====================================================
+   PIE CORPORATIVO
+   ===================================================== */
+
+.footer-corporativo {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+/* =====================================================
+   MOVILES
+   ===================================================== */
 
 @media (max-width: 480px) {
+
+    #pantallaMenu h1 {
+        font-size: 2.2rem;
+    }
 
     .tarjetas-grid {
         gap: 10px;
@@ -84,14 +255,5 @@
 
     .tarjeta-ayuda {
         min-height: 90px;
-    }
-
-    .icono {
-        font-size: 2.2rem;
-    }
-
-    .tarjeta-acogida span,
-    .tarjeta-ayuda span {
-        font-size: .8rem;
     }
 }
