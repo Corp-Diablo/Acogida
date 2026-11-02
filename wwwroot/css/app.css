@@ -1,7 +1,7 @@
+
 /* =====================================================
    CONTROL DE PANTALLAS
    ===================================================== */
-
 .pantalla {
     display: none;
 }
@@ -11,16 +11,8 @@
     }
 
 /* =====================================================
-   CONTENEDOR PRINCIPAL
+   BODY
    ===================================================== */
-
-.contenedor-menu {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
 body {
     background: #f5f5f5;
     font-family: Arial, Helvetica, sans-serif;
@@ -28,105 +20,14 @@ body {
     padding: 0;
 }
 
-/* =====================================================
-   TITULOS
-   ===================================================== */
-
 h1 {
     margin: 15px 0;
     text-align: center;
 }
 
-#pantallaMenu h1 {
-    color: #ffc13b;
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-#pantallaMenu p {
-    text-align: center;
-    color: #444;
-    margin-bottom: 20px;
-}
-
 /* =====================================================
-   TARJETAS PRINCIPALES DE ACOGIDA
+   CONTENEDORES DE CONTENIDO
    ===================================================== */
-
-.tarjetas-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    max-width: 420px;
-    margin: 20px auto;
-}
-
-.tarjeta-acogida {
-    background: #ffffff;
-    border: none;
-    border-radius: 22px;
-    min-height: 140px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,.15);
-    cursor: pointer;
-    transition: all .25s ease;
-}
-
-    .tarjeta-acogida:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 25px rgba(0,0,0,.20);
-    }
-
-    .tarjeta-acogida span {
-        color: #1565c0;
-        font-size: .95rem;
-        font-weight: 700;
-        margin-top: 8px;
-    }
-
-.icono {
-    font-size: 2.8rem;
-}
-
-/* =====================================================
-   TARJETA SOS
-   ===================================================== */
-
-.tarjeta-ayuda {
-    width: 100%;
-    max-width: 420px;
-    min-height: 100px;
-    margin: 15px auto 0 auto;
-    border: none;
-    border-radius: 22px;
-    background: #1565c0;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,.20);
-    cursor: pointer;
-    transition: all .25s ease;
-}
-
-    .tarjeta-ayuda:hover {
-        background: #0d47a1;
-    }
-
-    .tarjeta-ayuda span {
-        font-size: 1rem;
-        font-weight: 700;
-        padding: 0 15px;
-    }
-
-/* =====================================================
-   PANTALLA ALIMENTOS Y SALUD
-   ===================================================== */
-
 .contenedor-movil {
     max-width: 450px;
     margin: 20px auto;
@@ -160,7 +61,6 @@ h1 {
 /* =====================================================
    BOTONES
    ===================================================== */
-
 .btn-volver {
     background: #757575;
     color: white;
@@ -223,37 +123,12 @@ h1 {
     }
 
 /* =====================================================
-   PIE CORPORATIVO
+   FOOTER
    ===================================================== */
-
 .footer-corporativo {
     text-align: center;
     margin-top: 30px;
     font-size: 11px;
     color: #777;
     letter-spacing: 1px;
-}
-
-/* =====================================================
-   MOVILES
-   ===================================================== */
-
-@media (max-width: 480px) {
-
-    #pantallaMenu h1 {
-        font-size: 2.2rem;
-    }
-
-    .tarjetas-grid {
-        gap: 10px;
-        max-width: 100%;
-    }
-
-    .tarjeta-acogida {
-        min-height: 120px;
-    }
-
-    .tarjeta-ayuda {
-        min-height: 90px;
-    }
 }
