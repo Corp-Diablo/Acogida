@@ -14,7 +14,7 @@ const offlineAssetsExclude = [ /^service-worker\.js$/ ];
 
 // Replace with your base path if you are hosting on a subfolder. Ensure there is a trailing '/'.
 // CORREGIT: Ara apunta correctament a la subcarpeta de GitHub Pages
-const base = "/Acogida/";
+const base = "/";
 const baseUrl = new URL(base, self.origin);
 const manifestUrlList = self.assetsManifest.assets.map(asset => new URL(asset.url, baseUrl).href);
 
