@@ -2,20 +2,17 @@
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
-<div class="pantalla-bienvenida">
+<div class="bienvenida-card">
 
-    <div class="logo-bienvenida">
-        🌍
-    </div>
+    <img src="/icons/mano-mundo.png"
+         alt="Acogida 2.0"
+         class="logo-principal" />
 
-    <h1 class="titulo-bienvenida">
-        ACOGIDA
-    </h1>
+    <h1>Bienvenido a Acogida 2.0</h1>
 
-    <p class="texto-bienvenida">
-        Comunicación básica y ayuda para personas recién llegadas
+    <p class="subtitulo">
+        Accede fácilmente a los servicios que necesitas.
     </p>
-
     <div class="idiomas-bienvenida">
 
         <button class="btn-idioma"
@@ -39,16 +36,11 @@
         </button>
 
     </div>
-
-
-    <button class="btn-siguiente" @onclick="Comenzar">
-        COMENZAR
-    </button>
-
-    <div class="copyright">
-        © 2026 Corp.Diablo
-    </div>
-    </div>
+    <a href="/home" class="btn-primary boton-empezar">
+        Comenzar
+    </a>
+    <p>© Corp.Diablo 2026. Todos los derechos reservados.</p>
+</div>
 @code {
 
     private void Comenzar()
