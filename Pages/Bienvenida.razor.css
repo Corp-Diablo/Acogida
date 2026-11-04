@@ -1,0 +1,27 @@
+/* CSS for Bienvenida component */
+.bienvenida-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.bienvenida-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient( 180deg, #f8fbff 0%, #eef6ff 100% );
+    border: 1px solid #dbeafe;
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+}
+
+.logo-principal {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}

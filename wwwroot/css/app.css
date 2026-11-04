@@ -1,152 +1,198 @@
 
-/* =====================================================
-   CONTROL DE PANTALLAS
-   ===================================================== */
-.pantalla {
-    display: none;
+:root {
+    /* Colores corporativos */
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success: #16a34a;
+    --success-hover: #15803d;
+    --warning: #f59e0b;
+    --warning-hover: #d97706;
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+    /* Fondos */
+    --background: #eef4ff;
+    --background-secondary: #dbeafe;
+    --surface: #ffffff;
+    /* Texto */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    /* Bordes */
+    --border-color: #dbe5f1;
+    /* Sombras */
+    --shadow-small: 0 4px 10px rgba(37, 99, 235, 0.08);
+    --shadow-medium: 0 8px 24px rgba(37, 99, 235, 0.15);
+    /* Radios */
+    --radius: 16px;
+    /* Espaciado */
+    --spacing: 1rem;
 }
 
-    .pantalla.activa {
-        display: block;
-    }
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
 
-/* =====================================================
-   BODY
-   ===================================================== */
+html,
 body {
-    background: #f5f5f5;
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient( 135deg, var(--background) 0%, #f8fbff 50%, var(--background-secondary) 100% );
+    color: var(--text-primary);
 }
 
-h1 {
-    margin: 15px 0;
-    text-align: center;
-}
-
-/* =====================================================
-   CONTENEDORES DE CONTENIDO
-   ===================================================== */
-.contenedor-movil {
-    max-width: 450px;
-    margin: 20px auto;
-    text-align: center;
-    background: white;
+/* Contenedor principal */
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.12);
 }
 
-.foto-alimento {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 20px;
-    margin-bottom: 15px;
+/* Tarjetas */
+.card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-small);
+    padding: 20px;
+    transition: all 0.3s ease;
 }
 
-.zona-iconos {
-    font-size: 100px;
-    margin-bottom: 15px;
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-medium);
+    }
+
+/* Rejilla de tarjetas */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-.indicador {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: #666;
-    margin-bottom: 15px;
+/* Títulos */
+h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-/* =====================================================
-   BOTONES
-   ===================================================== */
-.btn-volver {
-    background: #757575;
-    color: white;
+h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Botones */
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger {
     border: none;
-    padding: 10px 18px;
     border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: bold;
-    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-    .btn-volver:hover {
-        background: #616161;
-    }
-
-.btn-principal {
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 50%;
-    background: #1565c0;
+.btn-primary {
+    background: var(--primary);
     color: white;
-    font-size: 32px;
-    cursor: pointer;
-    margin: 10px 0;
 }
 
-    .btn-principal:hover {
-        background: #0d47a1;
+    .btn-primary:hover {
+        background: var(--primary-hover);
     }
 
-.btn-idioma {
-    border: none;
-    background: #eeeeee;
-    border-radius: 10px;
-    padding: 10px 12px;
-    cursor: pointer;
-    margin: 4px;
-    font-size: 1.2rem;
-}
-
-    .btn-idioma:hover {
-        background: #dcdcdc;
-    }
-
-.btn-siguiente {
-    display: block;
-    margin: 15px auto 0 auto;
-    border: none;
-    background: #2e7d32;
+.btn-success {
+    background: var(--success);
     color: white;
-    padding: 12px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
 }
 
-    .btn-siguiente:hover {
-        background: #1b5e20;
+    .btn-success:hover {
+        background: var(--success-hover);
     }
 
-/* =====================================================
-   FOOTER
-   ===================================================== */
-.footer-corporativo {
+.btn-warning {
+    background: var(--warning);
+    color: white;
+}
+
+    .btn-warning:hover {
+        background: var(--warning-hover);
+    }
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+    .btn-danger:hover {
+        background: var(--danger-hover);
+    }
+
+/* Iconos de categorías */
+.category-icon {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+/* Tarjetas del menú principal */
+.menu-card {
     text-align: center;
+}
+
+    .menu-card img {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+/* Pie de página */
+footer {
     margin-top: 30px;
-    font-size: 11px;
-    color: #777;
-    letter-spacing: 1px;
- }
-#blazor-error-ui {
-    background: lightyellow;
-    bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    display: none;
-    left: 0;
-    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
+/* Responsive */
+@media (max-width: 768px) {
+
+    .page-container {
+        padding: 15px;
     }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
