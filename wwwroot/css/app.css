@@ -196,3 +196,6 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+#blazor-error-ui {
+    display: none !important;
+}
