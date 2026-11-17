@@ -1,10 +1,11 @@
 ﻿@page "/inicio"
 @inject IJSRuntime JS
+<!-- PANTALLA 1: MENÚ PRINCIPAL -->
 
-<!-- PANTALLA 1: MENÚ PRINCIPAL-->
-<div class="contenedor-menu">
-<div id="pantallaMenu" class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
-    <h1 style="color:#ffc13b; margin-top:20px;">
+<div id="pantallaMenu"
+     class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
+
+    <h1 class="titulo-principal">
         ACOGIDA
     </h1>
 
@@ -16,74 +17,133 @@
 
         <button class="tarjeta-acogida"
                 @onclick='() => CanviarPantalla("aliments")'>
+
             <div class="icono">🍞</div>
             <span>ALIMENTACIÓN</span>
+
         </button>
 
         <button class="tarjeta-acogida"
                 @onclick='() => CanviarPantalla("auxili")'>
+
             <div class="icono">🏥</div>
             <span>SALUD</span>
+
         </button>
 
         <button class="tarjeta-acogida">
+
             <div class="icono">📋</div>
             <span>TRÁMITES</span>
+
         </button>
 
         <button class="tarjeta-acogida">
+
             <div class="icono">🤝</div>
             <span>ACOMPAÑAMIENTO</span>
+
         </button>
 
     </div>
 
     <button class="tarjeta-ayuda">
+
         <div class="icono">🆘</div>
         <span>NO ENCUENTRO LO QUE NECESITO</span>
+
     </button>
 
 </div>
-<!-- PANTALLA 2: JOC D'ALIMENTS -->
-<div id="pantallaAliments" class="pantalla @(pantallaActiva == "aliments" ? "activa" : "")">
-    <button class="btn-volver" @onclick='() => CanviarPantalla("menu")'>⬅ VOLVER / رجوع</button>
-    <br>
-    <div id="lblContadorAli" class="indicador">@(indexAli + 1) / @llistaAliments.Count</div>
-    <div class="contenedor-movil">
-        <!-- CORREGIT: S'ha canviat 'imagen/' per 'img/' per coincidir amb la teva arrel real i s'afegeix @key -->
-        <img @key="llistaAliments[indexAli].Img" id="imgAlimento" class="foto-alimento" src="img/@llistaAliments[indexAli].Img" alt="Comida">
-        <h1 id="txtAlimento">@ObtenirTextAlimentActual()</h1>
-        <button class="btn-principal" @onclick='() => ParlarAliments("es")'>🔊</button>
-        <div style="font-size:13px; color:#666; margin:10px 0 2px 0; font-weight:bold;">Ayuda / المساعدة:</div>
-        <button class="btn-idioma" @onclick='() => ParlarAliments("ar_es")'>🇸🇦</button>
-        <button class="btn-idioma" @onclick='() => ParlarAliments("ar_da")'>🇲🇦</button>
-        <button class="btn-idioma" @onclick='() => ParlarAliments("fr")'>🇫🇷</button>
-        <button class="btn-idioma" @onclick='() => ParlarAliments("en")'>🇬🇧</button>
-        <button class="btn-siguiente" @onclick="AvancarAliments">SIGUIENTE ➔</button>
+<!-- PANTALLA 2: ALIMENTACIÓN -->
+
+<div id="pantallaAliments"
+     class="pantalla @(pantallaActiva == "aliments" ? "activa" : "")">
+
+    <button class="btn-volver"
+            @onclick='() => CanviarPantalla("menu")'>
+        ⬅ VOLVER / رجوع
+    </button>
+
+    <div id="lblContadorAli"
+         class="indicador">
+        @(indexAli + 1) / @llistaAliments.Count
     </div>
+
+    <div class="contenedor-movil">
+
+        <img @key="llistaAliments[indexAli].Img"
+             id="imgAlimento"
+             class="foto-alimento"
+             src="img/@llistaAliments[indexAli].Img"
+             alt="Comida" />
+
+        <h1 id="txtAlimento">
+            @ObtenirTextAlimentActual()
+        </h1>
+
+        <button class="btn-principal"
+                @onclick='() => ParlarAliments("es")'>
+            🔊
+        </button>
+
+        <br />
+
+        <button class="btn-siguiente"
+                @onclick="AvancarAliments">
+            SIGUIENTE ➜
+        </button>
+
+    </div>
+
 </div>
 
-<!-- PANTALLA 3: FRASES D'AUXILI -->
-<div id="pantallaAuxili" class="pantalla @(pantallaActiva == "auxili" ? "activa" : "")">
-    <button class="btn-volver" @onclick='() => CanviarPantalla("menu")'>⬅ VOLVER / رجوع</button>
-    <br>
-    <div id="lblContadorAux" class="indicador">@(indexAux + 1) / @llistaFrases.Count</div>
+<!-- PANTALLA 3: SALUD -->
+
+<div id="pantallaAuxili"
+     class="pantalla @(pantallaActiva == "auxili" ? "activa" : "")">
+
+    <button class="btn-volver"
+            @onclick='() => CanviarPantalla("menu")'>
+        ⬅ VOLVER / رجوع
+    </button>
+
+    <div id="lblContadorAux"
+         class="indicador">
+        @(indexAux + 1) / @llistaFrases.Count
+    </div>
+
     <div class="contenedor-movil">
-        <div id="icoAuxilio" class="zona-iconos">@llistaFrases[indexAux].Ico</div>
-        <h1 id="txtFrase">@ObtenirTextFraseActual()</h1>
-        <button class="btn-principal" @onclick='() => ParlarFrases("es")'>🔊</button>
-        <div style="font-size:13px; color:#666; margin:10px 0 2px 0; font-weight:bold;">Ayuda / المساعدة:</div>
-        <button class="btn-idioma" @onclick='() => ParlarFrases("ar_es")'>🇸🇦</button>
-        <button class="btn-idioma" @onclick='() => ParlarFrases("ar_da")'>🇲🇦</button>
-        <button class="btn-idioma" @onclick='() => ParlarFrases("fr")'>🇫🇷</button>
-        <button class="btn-idioma" @onclick='() => ParlarFrases("en")'>🇬🇧</button>
-        <button class="btn-siguiente" style="background-color:#e65100;" @onclick="AvancarFrases">SIGUIENTE ➔</button>
+
+        <div id="icoAuxilio"
+             class="zona-iconos">
+            @llistaFrases[indexAux].Ico
+        </div>
+
+        <h1 id="txtFrase">
+            @ObtenirTextFraseActual()
+        </h1>
+
+        <button class="btn-principal"
+                @onclick='() => ParlarFrases("es")'>
+            🔊
+        </button>
+
+        <br />
+
+        <button class="btn-siguiente"
+                @onclick="AvancarFrases">
+            SIGUIENTE ➜
+        </button>
+
     </div>
-    </div>
-   <!-- PEU DE PÀGINA CORPORATIU -->
-    <div class="copyright">
-        © 2026 Corp.Diablo
-    </div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div class="copyright">
+    © 2026 Corp.Diablo
 </div>
 @code {
     // Control de navegació de pantalles

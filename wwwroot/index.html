@@ -5,16 +5,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acogida</title>
-    <base href="/"/>
+
+    <!-- GitHub Pages -->
+    <base href="/" />
+
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
-    <link rel="icon" type="imagen/png" href="favicon.png" />
     <link href="Acogida.styles.css" rel="stylesheet" />
-    <link href="manifest.webmanifest" rel="manifest" />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Desactivado temporalmente -->
+    <!-- <link href="manifest.webmanifest" rel="manifest" /> -->
+    <!-- Desactivados temporalmente -->
+    <!--
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    -->
+
     <script type="importmap"></script>
-    <link href="css/app.css" rel="stylesheet" />    
+
 </head>
 
 <body>
@@ -31,8 +41,18 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
-    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- Service Worker desactivado temporalmente -->
+    <!--
+    <script>
+        navigator.serviceWorker.register('service-worker.js', {
+            updateViaCache: 'none'
+        });
+    </script>
+    -->
+
 </body>
 
 </html>

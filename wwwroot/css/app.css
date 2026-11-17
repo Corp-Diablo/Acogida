@@ -1,201 +1,162 @@
+/* ==========================================
+   CONTROL DE PANTALLAS
+   ========================================== */
 
-:root {
-    /* Colores corporativos */
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --success: #16a34a;
-    --success-hover: #15803d;
-    --warning: #f59e0b;
-    --warning-hover: #d97706;
-    --danger: #dc2626;
-    --danger-hover: #b91c1c;
-    /* Fondos */
-    --background: #eef4ff;
-    --background-secondary: #dbeafe;
-    --surface: #ffffff;
-    /* Texto */
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    /* Bordes */
-    --border-color: #dbe5f1;
-    /* Sombras */
-    --shadow-small: 0 4px 10px rgba(37, 99, 235, 0.08);
-    --shadow-medium: 0 8px 24px rgba(37, 99, 235, 0.15);
-    /* Radios */
-    --radius: 16px;
-    /* Espaciado */
-    --spacing: 1rem;
+/* Todas las pantallas ocultas por defecto */
+.pantalla {
+    display: none !important;
+    width: 100%;
 }
 
-/* Reset básico */
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient( 135deg, var(--background) 0%, #f8fbff 50%, var(--background-secondary) 100% );
-    color: var(--text-primary);
-}
-
-/* Contenedor principal */
-.page-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Tarjetas */
-.card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-small);
-    padding: 20px;
-    transition: all 0.3s ease;
-}
-
-    .card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-medium);
+    /* Solo se muestra la que esté activa */
+    .pantalla.activa {
+        display: block !important;
     }
 
-/* Rejilla de tarjetas */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+/* ==========================================
+   CONTROL DE PANTALLAS
+   ========================================== */
+
+.pantalla {
+    display: none !important;
+    width: 100%;
 }
 
-/* Títulos */
-h1 {
-    color: var(--primary);
-    font-size: 2.5rem;
+    .pantalla.activa {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+   /* ==========================
+   TARJETAS GENERALES
+   ========================== */
+
+.tarjeta-acogida,
+.tarjeta-ayuda {
+    background: #ffffff;
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    transition: all .25s ease;
+    cursor: pointer;
+}
+
+    .tarjeta-acogida:hover,
+    .tarjeta-ayuda:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(37,99,235,.20);
+    }
+
+/* ==========================
+   TARJETAS DEL MENÚ
+   ========================== */
+
+.tarjeta-acogida {
+    min-height: 180px;
+    padding: 25px;
+    text-align: center;
+    color: #2563eb;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
 }
 
-h2 {
-    color: var(--primary);
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-}
+    .tarjeta-acogida .icono {
+        font-size: 60px;
+        margin-bottom: 15px;
+    }
 
-h3 {
-    color: var(--primary);
+/* ==========================
+   TARJETA AYUDA
+   ========================== */
+
+.tarjeta-ayuda {
+    background: linear-gradient(135deg,#2563eb,#1d4ed8);
+    color: white;
+    min-height: 110px;
+    width: 100%;
     font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 
-p {
-    color: var(--text-secondary);
-    line-height: 1.6;
+    .tarjeta-ayuda .icono {
+        font-size: 48px;
+    }
+
+/* ==========================
+   CONTENEDOR TARJETAS
+   ========================== */
+
+.tarjetas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+    margin-top: 20px;
 }
 
-/* Botones */
-.btn-primary,
-.btn-success,
-.btn-warning,
-.btn-danger {
+/* ==========================
+   PÁGINAS DE CONTENIDO
+   ========================== */
+
+.contenedor-movil {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    max-width: 650px;
+    margin: 20px auto;
+}
+
+/* ==========================
+   IMÁGENES
+   ========================== */
+
+.foto-alimento {
+    width: 280px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,.15);
+}
+
+/* ==========================
+   TÍTULOS
+   ========================== */
+
+#txtAlimento,
+#txtFrase {
+    color: #2563eb;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+/* ==========================
+   BOTONES
+   ========================== */
+
+.btn-volver,
+.btn-siguiente {
     border: none;
     border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 1rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
 }
 
-.btn-primary {
-    background: var(--primary);
+.btn-volver {
+    background: #6b7280;
     color: white;
+    padding: 10px 20px;
 }
 
-    .btn-primary:hover {
-        background: var(--primary-hover);
-    }
-
-.btn-success {
-    background: var(--success);
+.btn-siguiente {
+    background: #ef6c00;
     color: white;
+    padding: 10px 20px;
 }
 
-    .btn-success:hover {
-        background: var(--success-hover);
-    }
-
-.btn-warning {
-    background: var(--warning);
-    color: white;
+.btn-volver:hover {
+    background: #4b5563;
 }
 
-    .btn-warning:hover {
-        background: var(--warning-hover);
-    }
-
-.btn-danger {
-    background: var(--danger);
-    color: white;
-}
-
-    .btn-danger:hover {
-        background: var(--danger-hover);
-    }
-
-/* Iconos de categorías */
-.category-icon {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-}
-
-/* Tarjetas del menú principal */
-.menu-card {
-    text-align: center;
-}
-
-    .menu-card img {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 10px;
-    }
-
-/* Pie de página */
-footer {
-    margin-top: 30px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-
-    .page-container {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.7rem;
-    }
-
-    h3 {
-        font-size: 1.2rem;
-    }
-
-    .cards-grid {
-        grid-template-columns: 1fr;
-    }
-}
-#blazor-error-ui {
-    display: none !important;
+.btn-siguiente:hover {
+    background: #e65100;
 }
