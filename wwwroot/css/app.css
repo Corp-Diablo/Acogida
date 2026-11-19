@@ -1,36 +1,73 @@
-/* ==========================================
-   CONTROL DE PANTALLAS
-   ========================================== */
+/* =========================================
+   ESTILOS GLOBALES DE APLICACIÓN
+   ========================================= */
 
-/* Todas las pantallas ocultas por defecto */
-.pantalla {
-    display: none !important;
-    width: 100%;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
 }
 
-    /* Solo se muestra la que esté activa */
-    .pantalla.activa {
-        display: block !important;
-    }
-
-/* ==========================================
-   CONTROL DE PANTALLAS
-   ========================================== */
-
-.pantalla {
-    display: none !important;
-    width: 100%;
+* {
+    box-sizing: border-box;
 }
 
-    .pantalla.activa {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+a {
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+/* =========================================
+   BOTONES COMUNES
+   ========================================= */
+
+.btn-volver,
+.btn-siguiente {
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.btn-volver {
+    background: #6b7280;
+    color: white;
+    padding: 10px 20px;
+}
+
+    .btn-volver:hover {
+        background: #4b5563;
     }
-   /* ==========================
-   TARJETAS GENERALES
-   ========================== */
+
+.btn-siguiente {
+    background: #ef6c00;
+    color: white;
+    padding: 10px 20px;
+}
+
+    .btn-siguiente:hover {
+        background: #e65100;
+    }
+
+/* =========================================
+   TARJETAS COMUNES
+   ========================================= */
 
 .tarjeta-acogida,
 .tarjeta-ayuda {
@@ -39,64 +76,16 @@
     border-radius: 24px;
     box-shadow: 0 8px 20px rgba(0,0,0,.10);
     transition: all .25s ease;
-    cursor: pointer;
 }
 
     .tarjeta-acogida:hover,
     .tarjeta-ayuda:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(37,99,235,.20);
     }
 
-/* ==========================
-   TARJETAS DEL MENÚ
-   ========================== */
-
-.tarjeta-acogida {
-    min-height: 180px;
-    padding: 25px;
-    text-align: center;
-    color: #2563eb;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-    .tarjeta-acogida .icono {
-        font-size: 60px;
-        margin-bottom: 15px;
-    }
-
-/* ==========================
-   TARJETA AYUDA
-   ========================== */
-
-.tarjeta-ayuda {
-    background: linear-gradient(135deg,#2563eb,#1d4ed8);
-    color: white;
-    min-height: 110px;
-    width: 100%;
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-    .tarjeta-ayuda .icono {
-        font-size: 48px;
-    }
-
-/* ==========================
-   CONTENEDOR TARJETAS
-   ========================== */
-
-.tarjetas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 25px;
-    margin-top: 20px;
-}
-
-/* ==========================
-   PÁGINAS DE CONTENIDO
-   ========================== */
+/* =========================================
+   CONTENIDO GENERAL
+   ========================================= */
 
 .contenedor-movil {
     background: white;
@@ -107,10 +96,6 @@
     margin: 20px auto;
 }
 
-/* ==========================
-   IMÁGENES
-   ========================== */
-
 .foto-alimento {
     width: 280px;
     max-width: 100%;
@@ -118,45 +103,10 @@
     box-shadow: 0 8px 15px rgba(0,0,0,.15);
 }
 
-/* ==========================
-   TÍTULOS
-   ========================== */
-
 #txtAlimento,
 #txtFrase {
     color: #2563eb;
     font-size: 3rem;
     font-weight: 700;
     margin: 15px 0;
-}
-
-/* ==========================
-   BOTONES
-   ========================== */
-
-.btn-volver,
-.btn-siguiente {
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-}
-
-.btn-volver {
-    background: #6b7280;
-    color: white;
-    padding: 10px 20px;
-}
-
-.btn-siguiente {
-    background: #ef6c00;
-    color: white;
-    padding: 10px 20px;
-}
-
-.btn-volver:hover {
-    background: #4b5563;
-}
-
-.btn-siguiente:hover {
-    background: #e65100;
 }

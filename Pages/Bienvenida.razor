@@ -1,32 +1,53 @@
 ﻿@page "/"
 @inject NavigationManager Navigation
 
-<div class="bienvenida-card">
+<div class="welcome-container">
 
-    <img src="/img/mano-mundo.png"
-         alt="Acogida 2.0"
-         class="logo-principal" />
+    <div class="welcome-card">
 
-    <h1>Bienvenido a Acogida 2.0</h1>
+        <img src="img/icons/mano-mundo.png"
+             alt="Acogida"
+             class="welcome-logo" />
 
-    <p class="subtitulo">
-        Accede fácilmente a los servicios que necesitas.
-    </p>
+        <h1 class="welcome-title">
+            Acogida
+        </h1>
 
-    <button class="btn-primary boton-empezar"
-            @onclick="Comenzar">
-        Comenzar
-    </button>
+        <p class="welcome-subtitle">
+            Información básica para ayudarte en tu llegada.
+        </p>
 
-    <p class="copyright">
-        © Corp.Diablo 2026. Todos los derechos reservados.
-    </p>
+        <div class="privacy-section">
+
+            <input type="checkbox"
+                   id="accept"
+                   @bind="Aceptado" />
+
+            <label for="accept">
+                He leído y acepto la política de privacidad y el aviso legal.
+            </label>
+
+        </div>
+
+        <button class="btn-start"
+                disabled="@(!Aceptado)"
+                @onclick="Entrar">
+            Comenzar
+        </button>
+
+        <div class="version-text">
+            Versión 1.0
+        </div>
+
+    </div>
 
 </div>
 
 @code {
 
-    private void Comenzar()
+    private bool Aceptado;
+
+    private void Entrar()
     {
         Navigation.NavigateTo("/inicio");
     }

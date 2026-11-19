@@ -2,7 +2,7 @@
 @inject IJSRuntime JS
 <!-- PANTALLA 1: MENÚ PRINCIPAL -->
 
-<div id="pantallaMenu"
+ <div id="pantallaMenu"
      class="pantalla @(pantallaActiva == "menu" ? "activa" : "")">
 
     <h1 class="titulo-principal">
@@ -18,7 +18,10 @@
         <button class="tarjeta-acogida"
                 @onclick='() => CanviarPantalla("aliments")'>
 
-            <div class="icono">🍞</div>
+            <img src="img/icons/alimentacion.png"
+                 class="icono-tarjeta"
+                 alt="Alimentación" />
+
             <span>ALIMENTACIÓN</span>
 
         </button>
@@ -26,114 +29,36 @@
         <button class="tarjeta-acogida"
                 @onclick='() => CanviarPantalla("auxili")'>
 
-            <div class="icono">🏥</div>
+            <img src="img/icons/salud.png"
+                 class="icono-tarjeta"
+                 alt="Salud" />
+
             <span>SALUD</span>
 
         </button>
 
-        <button class="tarjeta-acogida">
+        <button class="tarjeta-acogida tarjeta-construccion">
 
-            <div class="icono">📋</div>
+            <img src="img/icons/tramites.png"
+                 class="icono-tarjeta"
+                 alt="Trámites" />
+
             <span>TRÁMITES</span>
 
+            <small>🚧 EN CONSTRUCCIÓN</small>
+
         </button>
 
-        <button class="tarjeta-acogida">
+        <button class="tarjeta-acogida tarjeta-construccion">
 
-            <div class="icono">🤝</div>
+            <img src="img/icons/acompanamiento.png"
+                 class="icono-tarjeta"
+                 alt="Acompañamiento" />
+
             <span>ACOMPAÑAMIENTO</span>
 
-        </button>
+            <small>🚧 EN CONSTRUCCIÓN</small>
 
-    </div>
-
-    <button class="tarjeta-ayuda">
-
-        <div class="icono">🆘</div>
-        <span>NO ENCUENTRO LO QUE NECESITO</span>
-
-    </button>
-
-</div>
-<!-- PANTALLA 2: ALIMENTACIÓN -->
-
-<div id="pantallaAliments"
-     class="pantalla @(pantallaActiva == "aliments" ? "activa" : "")">
-
-    <button class="btn-volver"
-            @onclick='() => CanviarPantalla("menu")'>
-        ⬅ VOLVER / رجوع
-    </button>
-
-    <div id="lblContadorAli"
-         class="indicador">
-        @(indexAli + 1) / @llistaAliments.Count
-    </div>
-
-    <div class="contenedor-movil">
-
-        <img @key="llistaAliments[indexAli].Img"
-             id="imgAlimento"
-             class="foto-alimento"
-             src="img/@llistaAliments[indexAli].Img"
-             alt="Comida" />
-
-        <h1 id="txtAlimento">
-            @ObtenirTextAlimentActual()
-        </h1>
-
-        <button class="btn-principal"
-                @onclick='() => ParlarAliments("es")'>
-            🔊
-        </button>
-
-        <br />
-
-        <button class="btn-siguiente"
-                @onclick="AvancarAliments">
-            SIGUIENTE ➜
-        </button>
-
-    </div>
-
-</div>
-
-<!-- PANTALLA 3: SALUD -->
-
-<div id="pantallaAuxili"
-     class="pantalla @(pantallaActiva == "auxili" ? "activa" : "")">
-
-    <button class="btn-volver"
-            @onclick='() => CanviarPantalla("menu")'>
-        ⬅ VOLVER / رجوع
-    </button>
-
-    <div id="lblContadorAux"
-         class="indicador">
-        @(indexAux + 1) / @llistaFrases.Count
-    </div>
-
-    <div class="contenedor-movil">
-
-        <div id="icoAuxilio"
-             class="zona-iconos">
-            @llistaFrases[indexAux].Ico
-        </div>
-
-        <h1 id="txtFrase">
-            @ObtenirTextFraseActual()
-        </h1>
-
-        <button class="btn-principal"
-                @onclick='() => ParlarFrases("es")'>
-            🔊
-        </button>
-
-        <br />
-
-        <button class="btn-siguiente"
-                @onclick="AvancarFrases">
-            SIGUIENTE ➜
         </button>
 
     </div>

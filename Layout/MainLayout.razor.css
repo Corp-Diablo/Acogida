@@ -3,29 +3,52 @@
     min-height: 100vh;
 }
 
-.barra-idiomas {
+/* Barra lateral */
+
+.sidebar {
     width: 90px;
-    background: #f5f7fa;
+    min-height: 100vh;
+    background: #1e293b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Selector de idiomas */
+
+.language-selector {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding-top: 20px;
-    box-shadow: 2px 0 8px rgba(0,0,0,.1);
 }
 
+/* Banderas */
+
 .bandera {
-    width: 60px;
-    height: auto;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
     cursor: pointer;
-    border-radius: 10px;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
 }
 
     .bandera:hover {
         transform: scale(1.1);
+        border-color: #60a5fa;
     }
+
+    .bandera:active {
+        transform: scale(0.95);
+    }
+
+/* Contenido principal */
 
 .contenido {
     flex: 1;
+    padding: 20px;
 }
